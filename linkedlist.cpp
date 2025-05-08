@@ -78,17 +78,37 @@ class List {
 
     }
     bool delNode(int nim)
+    {
+
+        Node *current, *previous;
+        if (!Search(nim, &previous, &current))
+        return false;
+
+        if (current == START)
+            START = START->next;
+
+        delete current;
+        return true;
+    }
+    
+    void traverse()
+    {
+        if (listEmpty())
         {
-
-            Node *current, *previous;
-            if (!Search(nim, &previous, &current))
-            return false;
-
-            if (current == START)
-                START = START->next;
-
-            delete current;
-            return true;
+            cout << "\nList Kosong\n";
         }
+        else
+        {
+        cout << "\nData didalam list adalah:\n";
+        Node *currentNode = START;
+        while (currentNode != NULL)
+        {
+            cout << currentNode->noMhs << endl;
+            currentNode = currentNode->next;
+        }
+        cout << endl;
+        }
+            
+    }
 
 };
